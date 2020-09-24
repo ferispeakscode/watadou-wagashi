@@ -2,7 +2,7 @@ export const WAGASHI = [
     {
         id: 0,
         name: "Mejiro",
-        image: "",
+        image: "/assets/images/meijiro.jpg",
         artisan: "Hanaoka Nao",
         featured: false,
         description: "A \"mejiro\", Japanese white-eye, said to have a golden soprano voice. Eat it with the beak pointed towards the direction of good luck for good luck."
