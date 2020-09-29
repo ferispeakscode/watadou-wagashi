@@ -15,3 +15,7 @@ export const ADD_PARTNERS = 'ADD_PARTNERS';
 export const PARTNERS_FAILED = 'PARTNERS_FAILED';
 
 export const ADD_FAVORITE = 'ADD_FAVORITE';
+
+export const WAGASHI_LOADING = 'WAGASHI_LOADING';
+export const ADD_WAGASHI = 'ADD_WAGASHI';
+export const WAGASHI_FAILED = 'WAGASHI_FAILED';

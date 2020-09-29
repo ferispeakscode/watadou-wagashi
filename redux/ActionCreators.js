@@ -173,3 +173,44 @@ export const addFavorite = campsiteId => ({
     type: ActionTypes.ADD_FAVORITE,
     payload: campsiteId
 })
+
+
+
+//Wagashi
+
+export const fetchWagashi = () => dispatch => {
+
+    dispatch(wagashiLoading());
+
+    return fetch(baseUrl + 'wagashi')
+        .then(response => {
+                if (response.ok) {
+                return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            })
+        .then(response => response.json())
+        .then(wagashi => dispatch(addWagashi(wagashi)))
+        .catch(error => dispatch(wagashiFailed(error.message)));
+};
+
+export const wagashiLoading = () => ({
+    type: ActionTypes.WAGASHI_LOADING
+});
+
+export const wagashiFailed = errMess => ({
+    type: ActionTypes.WAGASHI_FAILED,
+    payload: errMess
+});
+
+export const addWagashi = wagashi => ({
+    type: ActionTypes.ADD_WAGASHI,
+    payload: wagashi
+});
