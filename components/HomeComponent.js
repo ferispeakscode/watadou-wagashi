@@ -9,7 +9,8 @@ const mapStateToProps = state => {
     return {
         campsites: state.campsites,
         promotions: state.promotions,
-        partners: state.partners
+        partners: state.partners,
+        wagashi: state.wagashi
     };
 };
 
@@ -50,6 +51,11 @@ class Home extends Component {
     render() {
         return (
             <ScrollView>
+                <RenderItem 
+                    item={this.props.wagashi.wagashi.filter(w => w.featured)[0]}
+                    isLoading={this.props.wagashi.isLoading}
+                    errMess={this.props.wagashi.errMess}
+                />
                 <RenderItem
                     item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
                     isLoading={this.props.campsites.isLoading}
@@ -64,6 +70,11 @@ class Home extends Component {
                     item={this.props.partners.partners.filter(partner => partner.featured)[0]}
                     isLoading={this.props.partners.isLoading}
                     errMess={this.props.partners.errMess}
+                />
+                <RenderItem 
+                    item={this.props.wagashi.wagashi.filter(w => w.featured)[0]}
+                    isLoading={this.props.wagashi.isLoading}
+                    errMess={this.props.wagashi.errMess}
                 />
             </ScrollView>
         );
