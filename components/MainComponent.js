@@ -5,6 +5,8 @@ import CampsiteInfo from './CampsiteInfoComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Reservation from './ReservationComponent';
+
+import Catalog from './CatalogComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -17,6 +19,25 @@ const mapDispatchToProps = {
     fetchPromotions,
     fetchPartners
 };
+
+const CatalogNavigator = createStackNavigator(
+    {
+        Catalog: { screen: Catalog },
+        // WagashiInfo: { screen: WagashiInfo }
+    },
+    {
+        initialRouteName: 'Catalog',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+                color: '#000'
+            }
+        }
+    }
+);
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -122,6 +143,19 @@ const ReservationNavigator = createStackNavigator(
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
+        Catalog: {
+            screen: CatalogNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                        name='list-alt'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Directory: { 
             screen: DirectoryNavigator,
             navigationOptions: {
