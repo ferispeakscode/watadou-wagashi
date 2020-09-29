@@ -10,14 +10,15 @@ import Catalog from './CatalogComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
+import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners, fetchWagashi } from '../redux/ActionCreators';
 import { Icon } from 'react-native-elements';
 
 const mapDispatchToProps = {
     fetchCampsites,
     fetchComments,
     fetchPromotions,
-    fetchPartners
+    fetchPartners,
+    fetchWagashi
 };
 
 const CatalogNavigator = createStackNavigator(
@@ -202,6 +203,7 @@ class Main extends Component {
         this.props.fetchComments();
         this.props.fetchPromotions();
         this.props.fetchPartners();
+        this.props.fetchWagashi();
     }
 
     render() {

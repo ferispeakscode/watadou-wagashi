@@ -7,11 +7,12 @@ import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites
+        campsites: state.campsites,
+        wagashi: state.wagashi
     };
 };
 
-class Directory extends Component {
+class Catalog extends Component {
 
     static navigationOptions = {
         title: 'Catalog'
@@ -19,36 +20,36 @@ class Directory extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        const renderDirectoryItem = ({item}) => {
+        const renderWagashiItem = ({item}) => {
             return (
                 <Tile
                     title={item.name}
                     caption={item.description}
                     featured
-                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    // onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
                     imageSrc={{uri: baseUrl + item.image}}
                 />
             );
         };
 
-        if (this.props.campsites.isLoading) {
+        if (this.props.wagashi.isLoading) {
             return <Loading />;
         }
-        if (this.props.campsites.errMess) {
+        if (this.props.wagashi.errMess) {
             return (
                 <View>
-                    <Text>{this.props.campsites.errMess}</Text>
+                    <Text>{this.props.wagashi.errMess}</Text>
                 </View>
             );
         }
         return(
             <FlatList
-                data={this.props.campsites.campsites}
-                renderItem={renderDirectoryItem}
+                data={this.props.wagashi.wagashi}
+                renderItem={renderWagashiItem}
                 keyExtractor={item => item.id.toString()}
             />
         );
     }
 }
 
-export default connect(mapStateToProps)(Directory);
+export default connect(mapStateToProps)(Catalog);
