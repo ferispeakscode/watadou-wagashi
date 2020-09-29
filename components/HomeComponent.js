@@ -6,6 +6,7 @@ import { baseUrl } from '../shared/baseUrl';
 import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
+    console.log("map state to props");
     return {
         campsites: state.campsites,
         promotions: state.promotions,
@@ -16,7 +17,7 @@ const mapStateToProps = state => {
 
 function RenderItem(props) {
     const {item} = props;
-
+    
     if (props.isLoading) {
         return <Loading />;
     }
@@ -70,11 +71,6 @@ class Home extends Component {
                     item={this.props.partners.partners.filter(partner => partner.featured)[0]}
                     isLoading={this.props.partners.isLoading}
                     errMess={this.props.partners.errMess}
-                />
-                <RenderItem 
-                    item={this.props.wagashi.wagashi.filter(w => w.featured)[0]}
-                    isLoading={this.props.wagashi.isLoading}
-                    errMess={this.props.wagashi.errMess}
                 />
             </ScrollView>
         );
