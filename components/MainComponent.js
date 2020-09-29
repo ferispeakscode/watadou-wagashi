@@ -29,11 +29,11 @@ const CatalogNavigator = createStackNavigator(
         initialRouteName: 'Catalog',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#4F171B'
             },
-            headerTintColor: '#000',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#000'
+                color: '#EAE8ED'
             }
         }
     }
