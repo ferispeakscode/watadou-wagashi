@@ -52,9 +52,9 @@ const DirectoryNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#EAE8ED'
             }
         }
     }
@@ -67,11 +67,11 @@ const HomeNavigator = createStackNavigator(
     {
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#4F171B'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#EAE8ED'
             }
         }
     }
@@ -86,9 +86,9 @@ const AboutNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#fff'
+                color:'#EAE8EDf'
             }
         }
     }
@@ -103,9 +103,9 @@ const ContactNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#fff'
+                color:'#EAE8ED'
             },
             headerLeft: <Icon 
                 name='address-card'
@@ -126,9 +126,9 @@ const ReservationNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: '#5637DD'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#fff'
+                color:'#EAE8ED'
             },
             headerLeft: <Icon 
                 name='tree'
@@ -193,7 +193,7 @@ const MainNavigator = createDrawerNavigator(
             navigationOptions: { title: 'Contact Us'} }
     },
     {
-        drawerBackgroundColor: '#CEC8FF'
+        drawerBackgroundColor: '#E5D5C7'
     }
 );
 
