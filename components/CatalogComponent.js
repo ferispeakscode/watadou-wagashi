@@ -7,7 +7,6 @@ import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites,
         wagashi: state.wagashi
     };
 };
@@ -26,7 +25,7 @@ class Catalog extends Component {
                     title={item.name}
                     caption={item.description}
                     featured
-                    // onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    onPress={() => navigate('WagashiDetail', { wagashiId: item.id })}
                     imageSrc={{uri: baseUrl + item.image}}
                 />
             );

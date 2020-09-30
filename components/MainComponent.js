@@ -7,6 +7,7 @@ import Contact from './ContactComponent';
 import Reservation from './ReservationComponent';
 
 import Catalog from './CatalogComponent';
+import WagashiDetail from './WagashiDetailComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -24,7 +25,7 @@ const mapDispatchToProps = {
 const CatalogNavigator = createStackNavigator(
     {
         Catalog: { screen: Catalog },
-        // WagashiInfo: { screen: WagashiInfo }
+        WagashiDetail: { screen: WagashiDetail }
     },
     {
         initialRouteName: 'Catalog',

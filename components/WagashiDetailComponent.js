@@ -8,6 +8,7 @@ import { postFavorite, postComment } from '../redux/ActionCreators';
 const mapStateToProps = state => {
     return {
         campsites: state.campsites,
+        wagashi: state.wagashi,
         comments: state.comments,
         favorites: state.favorites
     };
@@ -15,35 +16,35 @@ const mapStateToProps = state => {
 
 //dispatch reducers using thunk
 const mapDispatchToProps = {
-    postFavorite: campsiteId => (postFavorite(campsiteId)),
-    postComment: (campsiteId, rating, author, text) => (postComment(campsiteId, rating, author, text))
+    postFavorite: wagashiId => (postFavorite(wagashiId)),
+    postComment: (wagashiId, rating, author, text) => (postComment(wagashiId, rating, author, text))
 };
 
-function RenderCampsite(props) {
-    const {campsite} = props;
+function RenderWagashi(props) {
+    const {wagashi} = props;
 
-    if (campsite) {
+    if (wagashi) {
         return (
             <Card
-                featuredTitle={campsite.name}
-                image={{uri: baseUrl + campsite.image}}>
-                <Text style={{margin:10}}>
-                    {campsite.description}
+                featuredTitle={wagashi.name}
+                image={{uri: baseUrl + wagashi.image}}>
+                <Text style={{margin: 10}}>
+                    {wagashi.description}
                 </Text>
                 <View style={styles.cardRow}>
-                    <Icon
+                    <Icon 
                         name={props.favorite ? 'heart' : 'heart-o'}
                         type='font-awesome'
-                        color= '#f50'
+                        color='#f50'
                         raised
                         reverse
                         onPress={() => props.favorite ? console.log('Already set as a favorite') : props.markFavorite()}
                     />
-                    <Icon
+                    <Icon 
                         style={styles.cardItem}
                         name='pencil'
                         type='font-awesome'
-                        color= '#5637DD'
+                        color='#5637DD'
                         raised
                         reverse
                         onPress={() => props.onShowModal()}
@@ -52,7 +53,7 @@ function RenderCampsite(props) {
             </Card>
         );
     }
-    return <View />;
+    return <View />
 }
 
 function RenderComments({comments}) {
@@ -61,13 +62,13 @@ function RenderComments({comments}) {
         return (
             <View style={{margin: 10}}>
                 <Text style={{fontSize: 14}}>{item.text}</Text>
-                <Rating
+                <Rating 
                     style={{alignItems: 'flex-start', paddingVertical:'5%'}}
                     startingValue={item.rating}
                     imageSize={10}
                     readonly
                 />
-                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
+                <Text style={{frontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
             </View>
         );
     };
@@ -83,9 +84,9 @@ function RenderComments({comments}) {
     );
 }
 
-class CampsiteInfo extends Component {
+class WagashiDetail extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             rating: 5,
@@ -95,16 +96,16 @@ class CampsiteInfo extends Component {
         }
     }
 
-    markFavorite(campsiteId) {
-        this.props.postFavorite(campsiteId);
+    markFavorite(wagashiId) {
+        this.props.postFavorite(wagashiId);
     }
 
     toggleModal() {
         this.setState({showModal: !this.state.showModal});
     }
 
-    handleComment(campsiteId) {
-        this.props.postComment(campsiteId, this.state.rating, this.state.author, this.state.text);
+    handleComment(wagashiId) {
+        this.props.postComment(wagashiId, this.state.rating, this.state.author, this.state.text);
         this.toggleModal();
     }
 
@@ -117,19 +118,20 @@ class CampsiteInfo extends Component {
         });
     }
 
-    static navigationOptions = {
-        title: 'Campsite Information'
+    static navigationoptions = {
+        title: 'Wagashi Details'
     }
 
-    render() {
-        const campsiteId = this.props.navigation.getParam('campsiteId');
-        const campsite = this.props.campsites.campsites.filter(campsite => campsite.id === campsiteId)[0];
-        const comments = this.props.comments.comments.filter(comment => comment.campsiteId === campsiteId);
+    render () {
+        const wagashiId = this.props.navigation.getParam('wagashiId');
+        const wagashi = this.props.wagashi.wagashi.filter(wagashi => wagashi.id === wagashiId)[0];
+        const comments = this.props.comments.comments.filter(comment => comment.wagashiId === wagashiId);
+
         return (
             <ScrollView>
-                <RenderCampsite campsite={campsite} 
-                    favorite={this.props.favorites.includes(campsiteId)}
-                    markFavorite={() => this.markFavorite(campsiteId)}
+                <RenderWagashi wagashi={wagashi} 
+                    favorite={this.props.favorites.includes(wagashiId)}
+                    markFavorite={() => this.markFavorite(wagashiId)}
                     onShowModal={() => this.toggleModal()}
                 />
                 <RenderComments comments={comments} />
@@ -145,26 +147,19 @@ class CampsiteInfo extends Component {
                             showRating
                             startingValue={this.state.rating}
                             imageSize={40}
-                            onFinishRating={(rating)=>this.setState({rating: rating})}
+                            onFinishRating={(rating) => this.setState({rating: rating})}
                         />
-                        <Input
-                            placeholder='Author'
-                            leftIcon={{type: 'font-awesome', name: 'user-o'}}
-                            leftIconContainerStyle={{paddingRight: 10}}
-                            onChangeText={(author)=>this.setState({author: author})}
-                            value={this.state.author}
-                        />
-                        <Input
+                        <Input 
                             placeholder='Comment'
                             leftIcon={{type: 'font-awesome', name: 'comment-o'}}
                             leftIconContainerStyle={{paddingRight: 10}}
-                            onChangeText={(text)=>this.setState({text: text})}
+                            onChangeText={(text) => this.setState({text: text})}
                             value={this.state.text}
                         />
-                        <View style={{margin:10}}>
-                            <Button 
+                        <View style={{margin: 10}}>
+                            <Button
                                 onPress={() => {
-                                    this.handleComment(campsiteId);
+                                    this.handleComment(wagashiId);
                                     this.resetForm();
                                 }}
                                 color='#5637DD'
@@ -172,7 +167,7 @@ class CampsiteInfo extends Component {
                             />
                         </View>
                         <View style={{margin: 10}}>
-                            <Button
+                            <Button 
                                 onPress={() => {
                                     this.toggleModal();
                                     this.resetForm();
@@ -204,6 +199,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 20
     }
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(WagashiDetail);
