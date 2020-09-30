@@ -7,7 +7,6 @@ import { postFavorite, postComment } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites,
         wagashi: state.wagashi,
         comments: state.comments,
         favorites: state.favorites
@@ -35,7 +34,7 @@ function RenderWagashi(props) {
                     <Icon 
                         name={props.favorite ? 'heart' : 'heart-o'}
                         type='font-awesome'
-                        color='#f50'
+                        color='#F56476'
                         raised
                         reverse
                         onPress={() => props.favorite ? console.log('Already set as a favorite') : props.markFavorite()}
@@ -44,7 +43,7 @@ function RenderWagashi(props) {
                         style={styles.cardItem}
                         name='pencil'
                         type='font-awesome'
-                        color='#5637DD'
+                        color='#FFC60A'
                         raised
                         reverse
                         onPress={() => props.onShowModal()}
@@ -58,6 +57,8 @@ function RenderWagashi(props) {
 
 function RenderComments({comments}) {
 
+    console.log("Render comments " + comments);
+
     const renderCommentItem = ({item}) => {
         return (
             <View style={{margin: 10}}>
@@ -68,7 +69,7 @@ function RenderComments({comments}) {
                     imageSize={10}
                     readonly
                 />
-                <Text style={{frontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
+                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
             </View>
         );
     };
@@ -126,6 +127,8 @@ class WagashiDetail extends Component {
         const wagashiId = this.props.navigation.getParam('wagashiId');
         const wagashi = this.props.wagashi.wagashi.filter(wagashi => wagashi.id === wagashiId)[0];
         const comments = this.props.comments.comments.filter(comment => comment.wagashiId === wagashiId);
+        console.log("rendered comments are:" + comments);
+        console.log(this.props.comments.comments);
 
         return (
             <ScrollView>
@@ -150,6 +153,13 @@ class WagashiDetail extends Component {
                             onFinishRating={(rating) => this.setState({rating: rating})}
                         />
                         <Input 
+                            placeholder='Author'
+                            leftIcon={{type: 'font-awesome', name:'user-o'}}
+                            leftIconContainerStyle={{paddingRight: 10}}
+                            onChangeText={(author) => this.setState({author: author})}
+                            value={this.state.author}
+                        />
+                        <Input 
                             placeholder='Comment'
                             leftIcon={{type: 'font-awesome', name: 'comment-o'}}
                             leftIconContainerStyle={{paddingRight: 10}}
@@ -162,7 +172,7 @@ class WagashiDetail extends Component {
                                     this.handleComment(wagashiId);
                                     this.resetForm();
                                 }}
-                                color='#5637DD'
+                                color='#AE323B'
                                 title='Submit'
                             />
                         </View>
@@ -172,7 +182,7 @@ class WagashiDetail extends Component {
                                     this.toggleModal();
                                     this.resetForm();
                                 }}
-                                color='#808080'
+                                color='#3B374B'
                                 title='Cancel'
                             />
                         </View>

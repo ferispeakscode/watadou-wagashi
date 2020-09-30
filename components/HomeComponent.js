@@ -6,7 +6,6 @@ import { baseUrl } from '../shared/baseUrl';
 import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
-    console.log("map state to props");
     return {
         campsites: state.campsites,
         promotions: state.promotions,
