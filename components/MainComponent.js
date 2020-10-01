@@ -85,7 +85,7 @@ const AboutNavigator = createStackNavigator(
     {
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#4F171B'
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
@@ -102,7 +102,7 @@ const ContactNavigator = createStackNavigator(
     {
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#4F171B'
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
@@ -145,7 +145,19 @@ const ReservationNavigator = createStackNavigator(
 
 const MainNavigator = createDrawerNavigator(
     {
-        Home: { screen: HomeNavigator },
+        Home: { 
+            screen: HomeNavigator,
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='home'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Catalog: {
             screen: CatalogNavigator,
             navigationOptions: {
@@ -188,10 +200,32 @@ const MainNavigator = createDrawerNavigator(
         },
         About: { 
             screen: AboutNavigator,
-            navigationOptions: { title: 'About Us'} },
+            navigationOptions: {
+                drawerLabel: 'About Us',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='address-card'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Contact: { 
             screen: ContactNavigator,
-            navigationOptions: { title: 'Contact Us'} }
+            navigationOptions: { 
+                drawerLabel: 'Contact Us',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='question'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } 
+        }
     },
     {
         drawerBackgroundColor: '#E5D5C7'
