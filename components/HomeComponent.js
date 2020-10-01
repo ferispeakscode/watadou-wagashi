@@ -34,7 +34,7 @@ function RenderItem(props) {
                 image={{uri: baseUrl + item.image}}>
                 <Text
                     style={{margin: 10}}>
-                    {item.description}
+                    {item.shortDescription}
                 </Text>
             </Card>
         );

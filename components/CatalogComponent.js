@@ -23,7 +23,6 @@ class Catalog extends Component {
             return (
                 <Tile
                     title={item.name}
-                    caption={item.description}
                     featured
                     onPress={() => navigate('WagashiDetail', { wagashiId: item.id })}
                     imageSrc={{uri: baseUrl + item.image}}
