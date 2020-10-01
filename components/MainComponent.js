@@ -161,7 +161,7 @@ const ReservationNavigator = createStackNavigator(
 
 const OrderNavigator = createStackNavigator(
     {
-        Order: { screen: Order }
+        Order: { screen: 'Order Wagashi' }
     },
     {
         navigationOptions: {
