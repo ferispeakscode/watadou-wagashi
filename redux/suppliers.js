@@ -8,11 +8,12 @@ export const suppliers = (state = { isLoading: true,
             return {...state, isLoading: false, errMess: null, suppliers: action.payload};
 
         case ActionTypes.SUPPLIERS_LOADING:
-            return {...state, isLoading: true, errMess: null, suppliers: []};
+            return {...state, isLoading: true, errMess: null, suppliers: []}
 
         case ActionTypes.SUPPLIERS_FAILED:
             return {...state, isLoading: false, errMess: action.payload};
+
         default:
-            return state;
+          return state;
     }
 };

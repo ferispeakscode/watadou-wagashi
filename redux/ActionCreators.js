@@ -234,8 +234,8 @@ export const fetchSuppliers = () => dispatch => {
                 throw errMess;
             })
         .then(response => response.json())
-        .then(wagashi => dispatch(addWagashi(wagashi)))
-        .catch(error => dispatch(wagashiFailed(error.message)));
+        .then(suppliers => dispatch(addSuppliers(suppliers)))
+        .catch(error => dispatch(suppliersFailed(error.message)));
 };
 
 export const suppliersLoading = () => ({

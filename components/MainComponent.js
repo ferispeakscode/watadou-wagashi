@@ -89,7 +89,7 @@ const AboutNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#EAE8EDf'
+                color:'#EAE8ED'
             }
         }
     }
@@ -206,6 +206,7 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
         this.props.fetchWagashi();
+        this.props.fetchSuppliers();
     }
 
     render() {
