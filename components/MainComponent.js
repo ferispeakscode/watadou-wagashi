@@ -9,7 +9,7 @@ import Order from './OrderComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners, fetchWagashi, fetchSuppliers } from '../redux/ActionCreators';
+import { fetchCampsites, fetchComments, fetchPromotions, fetchWagashi, fetchSuppliers } from '../redux/ActionCreators';
 import { Icon } from 'react-native-elements';
 
 const mapDispatchToProps = {
