@@ -185,11 +185,11 @@ export const fetchWagashi = () => dispatch => {
     return fetch(baseUrl + 'wagashi')
         .then(response => {
                 if (response.ok) {
-                return response;
+                    return response;
                 } else {
                     const error = new Error(`Error ${response.status}: ${response.statusText}`);
                     error.response = response;
-                throw error;
+                    throw error;
                 }
             },
             error => {
@@ -217,7 +217,26 @@ export const addWagashi = wagashi => ({
 
 export const fetchSuppliers = () => dispatch => {
 
-}
+    dispatch(suppliersLoading());
+
+    return fetch(baseUrl + 'suppliers')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            })
+        .then(response => response.json())
+        .then(wagashi => dispatch(addWagashi(wagashi)))
+        .catch(error => dispatch(wagashiFailed(error.message)));
+};
 
 export const suppliersLoading = () => ({
     type: ActionTypes.SUPPLIERS_LOADING
@@ -231,4 +250,4 @@ export const suppliersFailed = errMess => ({
 export const addSuppliers = suppliers => ({
     type: ActionTypes.ADD_SUPPLIERS,
     payload: suppliers
-})
+});
