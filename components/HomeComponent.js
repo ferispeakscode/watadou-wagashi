@@ -59,8 +59,8 @@ class Home extends Component {
                 />
                 <RenderItem 
                     item={this.props.suppliers.suppliers.filter(supplier => supplier.featured)[0]}
-                    isLoading={this.props.supplier.isLoading}
-                    errMess={this.props.supplier.errMess}
+                    isLoading={this.props.suppliers.isLoading}
+                    errMess={this.props.suppliers.errMess}
                 />
                 <RenderItem
                     item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
