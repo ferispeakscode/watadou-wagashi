@@ -6,7 +6,7 @@ class Order extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             name: '',
             number: 1,
@@ -17,7 +17,7 @@ class Order extends Component {
     }
 
     static navigationOptions = {
-        title: 'Order Wagashi'
+        title: 'Order'
     }
 
     toggleModal() {

@@ -8,6 +8,7 @@ import Reservation from './ReservationComponent';
 
 import Catalog from './CatalogComponent';
 import WagashiDetail from './WagashiDetailComponent';
+import Order from './OrderComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -161,7 +162,7 @@ const ReservationNavigator = createStackNavigator(
 
 const OrderNavigator = createStackNavigator(
     {
-        Order: { screen: 'Order Wagashi' }
+        Order: { screen: Order },
     },
     {
         navigationOptions: {
@@ -173,9 +174,9 @@ const OrderNavigator = createStackNavigator(
                 color: '#EAE8ED'
             },
             headerLeft: <Icon
-                name='shapes'
+                name='plus-circle'
                 type='font-awesome'
-                iconStyle={{margin: 20}}
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
         }
@@ -216,7 +217,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'Order Wagashi for Pickup',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='shapes'
+                        name='plus-circle'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
