@@ -214,3 +214,21 @@ export const addWagashi = wagashi => ({
     type: ActionTypes.ADD_WAGASHI,
     payload: wagashi
 });
+
+export const fetchSuppliers = () => dispatch => {
+
+}
+
+export const suppliersLoading = () => ({
+    type: ActionTypes.SUPPLIERS_LOADING
+});
+
+export const suppliersFailed = errMess => ({
+    type: ActionTypes.SUPPLIERS_FAILED,
+    payload: errMess
+});
+
+export const addSuppliers = suppliers => ({
+    type: ActionTypes.ADD_SUPPLIERS,
+    payload: suppliers
+})
