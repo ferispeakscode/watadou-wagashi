@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     };
 };
 
-const Mission = () {
+const Mission = () => {
     return (
         <Card title="Our Mission">
             <Text>
@@ -21,6 +21,13 @@ const Mission = () {
 
 class About extends Component {
 
+    static navigationOptions = {
+        title: 'About Us'
+    }
+
+    render() {
+
+    }
 }
 
 export default connect(mapStateToProps)(About);
