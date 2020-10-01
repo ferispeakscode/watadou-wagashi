@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
-import Directory from './DirectoryComponent';
-import CampsiteInfo from './CampsiteInfoComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
-import Reservation from './ReservationComponent';
 
 import Catalog from './CatalogComponent';
 import WagashiDetail from './WagashiDetailComponent';
@@ -16,10 +13,8 @@ import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners, fetchWag
 import { Icon } from 'react-native-elements';
 
 const mapDispatchToProps = {
-    fetchCampsites,
     fetchComments,
     fetchPromotions,
-    fetchPartners,
     fetchWagashi,
     fetchSuppliers
 };
@@ -118,48 +113,6 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
-const DirectoryNavigator = createStackNavigator(
-    {
-        Directory: { screen: Directory },
-        CampsiteInfo: { screen: CampsiteInfo }
-    },
-    {
-        initialRouteName: 'Directory',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#5637DD'
-            },
-            headerTintColor: '#EAE8ED',
-            headerTitleStyle: {
-                color: '#EAE8ED'
-            }
-        }
-    }
-);
-
-const ReservationNavigator = createStackNavigator(
-    {
-        Reservation: { screen: Reservation },
-    },
-    {
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#5637DD'
-            },
-            headerTintColor: '#EAE8ED',
-            headerTitleStyle: {
-                color:'#EAE8ED'
-            },
-            headerLeft: <Icon 
-                name='tree'
-                type='font-awesome'
-                iconStyle={{margin: 20}}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        }
-    }
-);
-
 const OrderNavigator = createStackNavigator(
     {
         Order: { screen: Order },
@@ -225,33 +178,6 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Directory: { 
-            screen: DirectoryNavigator,
-            navigationOptions: {
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='list'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
-        Reservation: { 
-            screen: ReservationNavigator,
-            navigationOptions: {
-                drawerLabel: 'Reserve Campsite',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='tree'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
         About: { 
             screen: AboutNavigator,
             navigationOptions: {
@@ -289,10 +215,8 @@ const MainNavigator = createDrawerNavigator(
 class Main extends Component {
 
     componentDidMount() {
-        this.props.fetchCampsites();
         this.props.fetchComments();
         this.props.fetchPromotions();
-        this.props.fetchPartners();
         this.props.fetchWagashi();
         this.props.fetchSuppliers();
     }
