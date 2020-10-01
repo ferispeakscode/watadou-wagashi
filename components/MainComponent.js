@@ -11,7 +11,7 @@ import WagashiDetail from './WagashiDetailComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
-import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners, fetchWagashi } from '../redux/ActionCreators';
+import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners, fetchWagashi, fetchSuppliers } from '../redux/ActionCreators';
 import { Icon } from 'react-native-elements';
 
 const mapDispatchToProps = {
@@ -19,7 +19,8 @@ const mapDispatchToProps = {
     fetchComments,
     fetchPromotions,
     fetchPartners,
-    fetchWagashi
+    fetchWagashi,
+    fetchSuppliers
 };
 
 const CatalogNavigator = createStackNavigator(
