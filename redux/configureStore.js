@@ -7,6 +7,7 @@ import { promotions } from './promotions';
 import { partners } from './partners';
 import { favorites } from './favorites';
 import { wagashi } from './wagashi';
+import { suppliers } from './suppliers';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -16,7 +17,8 @@ export const ConfigureStore = () => {
             partners,
             promotions,
             favorites,
-            wagashi
+            wagashi,
+            suppliers
         }),
         applyMiddleware(thunk, logger)
     );
