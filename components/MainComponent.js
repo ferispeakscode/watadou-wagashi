@@ -48,28 +48,9 @@ const CatalogNavigator = createStackNavigator(
     }
 );
 
-const DirectoryNavigator = createStackNavigator(
-    {
-        Directory: { screen: Directory },
-        CampsiteInfo: { screen: CampsiteInfo }
-    },
-    {
-        initialRouteName: 'Directory',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#5637DD'
-            },
-            headerTintColor: '#EAE8ED',
-            headerTitleStyle: {
-                color: '#EAE8ED'
-            }
-        }
-    }
-);
-
 const HomeNavigator = createStackNavigator(
     {
-        Home: { screen: Home },
+        Home: { screen: Home }
     },
     {
         navigationOptions: {
@@ -92,7 +73,7 @@ const HomeNavigator = createStackNavigator(
 
 const AboutNavigator = createStackNavigator(
     {
-        About: { screen: About },
+        About: { screen: About }
     },
     {
         navigationOptions: {
@@ -115,7 +96,7 @@ const AboutNavigator = createStackNavigator(
 
 const ContactNavigator = createStackNavigator(
     {
-        Contact: { screen: Contact },
+        Contact: { screen: Contact }
     },
     {
         navigationOptions: {
@@ -132,6 +113,25 @@ const ContactNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
+        }
+    }
+);
+
+const DirectoryNavigator = createStackNavigator(
+    {
+        Directory: { screen: Directory },
+        CampsiteInfo: { screen: CampsiteInfo }
+    },
+    {
+        initialRouteName: 'Directory',
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#EAE8ED',
+            headerTitleStyle: {
+                color: '#EAE8ED'
+            }
         }
     }
 );
@@ -159,7 +159,28 @@ const ReservationNavigator = createStackNavigator(
     }
 );
 
-
+const OrderNavigator = createStackNavigator(
+    {
+        Order: { screen: Order }
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#4F171B'
+            },
+            headerTintColor: '#EAE8ED',
+            headerTitleStyle: {
+                color: '#EAE8ED'
+            },
+            headerLeft: <Icon
+                name='shapes'
+                type='font-awesome'
+                iconStyle={{margin: 20}}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        }
+    }
+);
 
 const MainNavigator = createDrawerNavigator(
     {
@@ -182,6 +203,20 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon 
                         name='list-alt'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Order: {
+            screen: OrderNavigator,
+            navigationOptions: {
+                drawerLabel: 'Order Wagashi for Pickup',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='shapes'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
