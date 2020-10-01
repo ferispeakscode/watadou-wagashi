@@ -37,7 +37,13 @@ const CatalogNavigator = createStackNavigator(
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
                 color: '#EAE8ED'
-            }
+            },
+            headerLeft: <Icon
+                name='list-alt'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
         }
     }
 );
@@ -73,7 +79,13 @@ const HomeNavigator = createStackNavigator(
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
                 color: '#EAE8ED'
-            }
+            },
+            headerLeft: <Icon
+                name='home'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
         }
     }
 );
@@ -90,7 +102,13 @@ const AboutNavigator = createStackNavigator(
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
                 color:'#EAE8ED'
-            }
+            },
+            headerLeft: <Icon
+                name='address-card'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
         }
     }
 );
@@ -109,9 +127,9 @@ const ContactNavigator = createStackNavigator(
                 color:'#EAE8ED'
             },
             headerLeft: <Icon 
-                name='address-card'
+                name='question'
                 type='font-awesome'
-                // iconStyle={styles.stackIcon}
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
         }
@@ -134,7 +152,7 @@ const ReservationNavigator = createStackNavigator(
             headerLeft: <Icon 
                 name='tree'
                 type='font-awesome'
-                // iconStyle={styles.stackIcon}
+                iconStyle={{margin: 20}}
                 onPress={() => navigation.toggleDrawer()}
             />
         }
