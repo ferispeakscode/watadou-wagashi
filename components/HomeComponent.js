@@ -10,7 +10,8 @@ const mapStateToProps = state => {
         campsites: state.campsites,
         promotions: state.promotions,
         partners: state.partners,
-        wagashi: state.wagashi
+        wagashi: state.wagashi,
+        suppliers: state.suppliers
     };
 };
 
@@ -55,6 +56,11 @@ class Home extends Component {
                     item={this.props.wagashi.wagashi.filter(w => w.featured)[0]}
                     isLoading={this.props.wagashi.isLoading}
                     errMess={this.props.wagashi.errMess}
+                />
+                <RenderItem 
+                    item={this.props.suppliers.suppliers.filter(supplier => supplier.featured)[0]}
+                    isLoading={this.props.supplier.isLoading}
+                    errMess={this.props.supplier.errMess}
                 />
                 <RenderItem
                     item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
