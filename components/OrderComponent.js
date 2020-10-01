@@ -1,10 +1,12 @@
-const { default: DatePicker } = require("react-native-datepicker");
-
+import React, { Component } from 'react';
+import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal } from 'react-native';
+import DatePicker from 'react-native-datepicker';
 
 class Order extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             name: '',
             number: 1,
