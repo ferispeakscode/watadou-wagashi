@@ -81,7 +81,7 @@ const AboutNavigator = createStackNavigator(
                 color:'#EAE8ED'
             },
             headerLeft: <Icon
-                name='address-card'
+                name='user-circle'
                 type='font-awesome'
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
@@ -104,7 +104,7 @@ const ContactNavigator = createStackNavigator(
                 color:'#EAE8ED'
             },
             headerLeft: <Icon 
-                name='question'
+                name='address-card'
                 type='font-awesome'
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
@@ -184,7 +184,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'About Us',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='address-card'
+                        name='user-circle'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -198,7 +198,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'Contact Us',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='question'
+                        name='address-card'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
