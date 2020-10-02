@@ -36,7 +36,7 @@ class Favorites extends Component {
                     onPress: () => {
                         Alert.alert(
                             'Delete Favorite?',
-                            'Are you sure you wish to delete this wagashi, ' + item.name + ', from favorites?',
+                            'Are you sure you wish to delete ' + item.name + ' from favorites?',
                             [
                                 {
                                     text: 'Cancel',
