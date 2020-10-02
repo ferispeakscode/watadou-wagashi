@@ -24,11 +24,7 @@ class Order extends Component {
     submitForm = () => {
         Alert.alert(
             "Submit Order?",
-            `Customer Name: ${this.state.name}\n\n
-            Type of Wagashi: ${this.state.type}\n\n
-            Number of Wagashi: ${this.state.number}\n\n
-            Pickup Date: ${this.state.date}\n\n
-            Giftbox Needed: ${this.state.gift}`,
+            `Customer Name: ${this.state.name}\n\nType of Wagashi: ${this.state.type}\n\nNumber of Wagashi: ${this.state.number}\n\nPickup Date: ${this.state.date}\n\nGiftbox Needed: ${this.state.gift}`,
             [
                 {
                     text: "Cancel",
@@ -66,6 +62,7 @@ class Order extends Component {
                         style={styles.formItem}
                         selectedValue={this.state.type}
                         onValueChange={itemValue => this.setState({type: itemValue})}>
+                        <Picker.item label='Choose' value='' />
                         <Picker.item label='Mejiro' value='Mejiro' />
                         <Picker.item label='Usuzumi-zakura' value='Usuzumi-zakura' />
                         <Picker.item label='Hazakura' value='Hazakura' />

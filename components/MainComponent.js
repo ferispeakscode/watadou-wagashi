@@ -56,13 +56,13 @@ const CatalogNavigator = createStackNavigator(
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
                 color: '#EAE8ED'
-            },
-            headerLeft: <Icon
-                name='list-alt'
-                type='font-awesome'
-                iconStyle={{margin: 20, color: '#EAE8ED'}}
-                onPress={() => navigation.toggleDrawer()}
-            />
+            }
+            // headerLeft: <Icon
+            //     name='list-alt'
+            //     type='font-awesome'
+            //     iconStyle={{margin: 20, color: '#EAE8ED'}}
+            //     onPress={() => navigation.toggleDrawer()}
+            // />
         }
     }
 );

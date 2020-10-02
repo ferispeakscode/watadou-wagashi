@@ -165,7 +165,7 @@ class WagashiDetail extends Component {
         });
     }
 
-    static navigationoptions = {
+    static navigationOptions = {
         title: 'Wagashi Details'
     }
 
