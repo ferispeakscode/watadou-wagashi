@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
-import About from './AboutComponent';
-import Contact from './ContactComponent';
-
 import Catalog from './CatalogComponent';
 import WagashiDetail from './WagashiDetailComponent';
+import Favorites from './FavoritesComponent';
 import Order from './OrderComponent';
+import About from './AboutComponent';
+import Contact from './ContactComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -13,11 +13,34 @@ import { fetchComments, fetchPromotions, fetchWagashi, fetchSuppliers } from '..
 import { Icon } from 'react-native-elements';
 
 const mapDispatchToProps = {
+    fetchWagashi,
     fetchComments,
     fetchPromotions,
-    fetchWagashi,
     fetchSuppliers
 };
+
+const HomeNavigator = createStackNavigator(
+    {
+        Home: { screen: Home }
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#4F171B'
+            },
+            headerTintColor: '#EAE8ED',
+            headerTitleStyle: {
+                color: '#EAE8ED'
+            },
+            headerLeft: <Icon
+                name='home'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        }
+    }
+);
 
 const CatalogNavigator = createStackNavigator(
     {
@@ -44,9 +67,9 @@ const CatalogNavigator = createStackNavigator(
     }
 );
 
-const HomeNavigator = createStackNavigator(
+const FavoritesNavigator = createStackNavigator(
     {
-        Home: { screen: Home }
+        Favorites: { screen: Favorites }
     },
     {
         navigationOptions: {
@@ -58,7 +81,30 @@ const HomeNavigator = createStackNavigator(
                 color: '#EAE8ED'
             },
             headerLeft: <Icon
-                name='home'
+                name='heart'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        }
+    }
+);
+
+const OrderNavigator = createStackNavigator(
+    {
+        Order: { screen: Order },
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#4F171B'
+            },
+            headerTintColor: '#EAE8ED',
+            headerTitleStyle: {
+                color: '#EAE8ED'
+            },
+            headerLeft: <Icon
+                name='plus-circle'
                 type='font-awesome'
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
@@ -113,29 +159,6 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
-const OrderNavigator = createStackNavigator(
-    {
-        Order: { screen: Order },
-    },
-    {
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#4F171B'
-            },
-            headerTintColor: '#EAE8ED',
-            headerTitleStyle: {
-                color: '#EAE8ED'
-            },
-            headerLeft: <Icon
-                name='plus-circle'
-                type='font-awesome'
-                iconStyle={{margin: 20, color: '#EAE8ED'}}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        }
-    }
-);
-
 const MainNavigator = createDrawerNavigator(
     {
         Home: { 
@@ -157,6 +180,20 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon 
                         name='list-alt'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Favorites: {
+            screen: FavoritesNavigator,
+            navigationOptions: {
+                drawerLabel: 'Favorite Wagashi',
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
