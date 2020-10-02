@@ -10,6 +10,7 @@ class Order extends Component {
 
         this.state = {
             name: '',
+            type: '',
             number: 1,
             date: '',
             gift: false,
@@ -23,7 +24,11 @@ class Order extends Component {
     submitForm = () => {
         Alert.alert(
             "Submit Order?",
-            `Reservation Name: ${this.state.name}\n\nNumber of Wagashi: ${this.state.number}\n\nPickup Date: ${this.state.date}\n\nGiftbox Needed: ${this.state.gift}`,
+            `Customer Name: ${this.state.name}\n\n
+            Type of Wagashi: ${this.state.type}\n\n
+            Number of Wagashi: ${this.state.number}\n\n
+            Pickup Date: ${this.state.date}\n\n
+            Giftbox Needed: ${this.state.gift}`,
             [
                 {
                     text: "Cancel",
@@ -42,6 +47,7 @@ class Order extends Component {
     resetForm() {
         this.setState({
             name: '',
+            type: '',
             number: 1,
             date: '',
             gift: false,
@@ -52,7 +58,20 @@ class Order extends Component {
         return (
             <Animatable.View animation ='zoomIn' duration={500} delay={500}>
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Name</Text>
+                    <Text style={styles.formLabel}>Customer Name</Text>
+                </View>
+                <View style={styles.formRow}>
+                    <Text style={styles.formLabel}>Type of Wagashi</Text>
+                    <Picker
+                        style={styles.formItem}
+                        selectedValue={this.state.type}
+                        onValueChange={itemValue => this.setState({type: itemValue})}>
+                        <Picker.item label='Mejiro' value='Mejiro' />
+                        <Picker.item label='Usuzumi-zakura' value='Usuzumi-zakura' />
+                        <Picker.item label='Hazakura' value='Hazakura' />
+                        <Picker.item label='Shingetsu' value='Shingetsu' />
+                        <Picker.item label='Shirabuji' value='Shirabuji' />
+                    </Picker>
                 </View>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Number of Wagashi</Text>
