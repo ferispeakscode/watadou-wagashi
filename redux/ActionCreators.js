@@ -89,17 +89,6 @@ export const addPromotions = promotions => ({
     payload: promotions
 });
 
-export const postFavorite = campsiteId => dispatch => {
-    setTimeout(() => {
-        dispatch(addFavorite(campsiteId));
-    }, 2000);
-};
-
-export const addFavorite = campsiteId => ({
-    type: ActionTypes.ADD_FAVORITE,
-    payload: campsiteId
-})
-
 export const fetchWagashi = () => dispatch => {
 
     dispatch(wagashiLoading());
@@ -172,4 +161,20 @@ export const suppliersFailed = errMess => ({
 export const addSuppliers = suppliers => ({
     type: ActionTypes.ADD_SUPPLIERS,
     payload: suppliers
+});
+
+export const postFavorite = wagashiId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(wagashiId));
+    }, 2000);
+};
+
+export const addFavorite = wagashiId => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: wagashiId
+});
+
+export const deleteFavorite = wagashiId => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: wagashiId
 });

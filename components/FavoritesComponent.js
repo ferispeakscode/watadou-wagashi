@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import Swipeout from 'react-native-swipeout';
-// import { deleteFavorite } from '../redux/ActionCreators';
+import { deleteFavorite } from '../redux/ActionCreators';
 import * as Animatable from 'react-native-animatable';
 
 
@@ -36,7 +36,7 @@ class Favorites extends Component {
                     onPress: () => {
                         Alert.alert(
                             'Delete Favorite?',
-                            'Are you sure you wish to delete this wagashi, + ' + item.name + ' from favorites?',
+                            'Are you sure you wish to delete this wagashi, ' + item.name + ', from favorites?',
                             [
                                 {
                                     text: 'Cancel',
@@ -80,7 +80,7 @@ class Favorites extends Component {
         }
         return(
             <FlatList
-                data={thisprops.wagashi.wagashi.filter(
+                data={this.props.wagashi.wagashi.filter(
                     w => this.props.favorites.includes(w.id)
                 )}
                 renderItem={renderFavoriteItem}
