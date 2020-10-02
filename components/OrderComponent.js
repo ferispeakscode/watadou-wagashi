@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal } from 'react-native';
+import { Text, View, StyleSheet, Picker, Switch, Button, Alert } from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import * as Animatable from 'react-native-animatable';
 
 class Order extends Component {
 
@@ -12,21 +13,30 @@ class Order extends Component {
             number: 1,
             date: '',
             gift: false,
-            showModal: false
         };
     }
 
     static navigationOptions = {
-        title: 'Order'
+        title: 'Order Wagashi'
     }
 
-    toggleModal() {
-        this.setState({showModal: !this.state.showModal});
-    }
-
-    handleOrder() {
-        console.log(JSON.stringify(this.state));
-        this.toggleModal();
+    submitForm = () => {
+        Alert.alert(
+            "Submit Order?",
+            `Reservation Name: ${this.state.name}\n\nNumber of Wagashi: ${this.state.number}\n\nPickup Date: ${this.state.date}\n\nGiftbox Needed: ${this.state.gift}`,
+            [
+                {
+                    text: "Cancel",
+                    style: "cancel",
+                    onPress: () => this.resetForm()
+                },
+                {
+                    text: "Submit",
+                    onPress: () => this.resetForm()
+                }
+            ],
+            { cancelable: false }
+        );
     }
 
     resetForm() {
@@ -35,13 +45,12 @@ class Order extends Component {
             number: 1,
             date: '',
             gift: false,
-            showModal: false
         });
     }
 
     render() {
         return (
-            <ScrollView>
+            <Animatable.View animation ='zoomIn' duration={500} delay={500}>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Name</Text>
                 </View>
@@ -101,34 +110,13 @@ class Order extends Component {
                 </View>
                 <View style={styles.formRow}>
                     <Button
-                        onPress={() => this.handleReservation()}
+                        onPress={() => this.submitForm()}
                         title='Order'
                         color='#4F171B'
                         accessibilityLabel='Tap me to make an order for wagashi'
                     />
                 </View>
-                <Modal
-                    animationType={'slide'}
-                    transparent={false}
-                    visible={this.state.showModal}
-                    onRequestClose={() => this.toggleModal()}>
-                    <View style={styles.modal}>
-                        <Text style={styles.modalTitle}>Order Confirmation</Text>
-                        <Text style={styles.modalText}>Name: {this.state.name}</Text>
-                        <Text style={styles.modalText}>Number of Wagashi: {this.state.number}</Text>
-                        <Text style={styles.modalText}>Pickup Date: {this.state.date}</Text>
-                        <Text style={styles.modalText}>Gift Box Needed: {this.state.gift ? 'Yes' : 'No'}</Text>
-                        <Button 
-                            onPress={() => {
-                                this.toggleModal();
-                                this.resetForm();
-                            }}
-                            color='#4F171B'
-                            title='Close'
-                        />
-                    </View>
-                </Modal>
-            </ScrollView>
+            </Animatable.View>
         );
     }
 }
