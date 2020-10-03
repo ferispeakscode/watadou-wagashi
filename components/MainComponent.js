@@ -24,7 +24,7 @@ const HomeNavigator = createStackNavigator(
         Home: { screen: Home }
     },
     {
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -38,7 +38,7 @@ const HomeNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
-        }
+        })
     }
 );
 
@@ -49,21 +49,21 @@ const CatalogNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Catalog',
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
                 color: '#EAE8ED'
-            }
-            // headerLeft: <Icon
-            //     name='list-alt'
-            //     type='font-awesome'
-            //     iconStyle={{margin: 20, color: '#EAE8ED'}}
-            //     onPress={() => navigation.toggleDrawer()}
-            // />
-        }
+            },
+            headerLeft: <Icon
+                name='list-alt'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -72,7 +72,7 @@ const FavoritesNavigator = createStackNavigator(
         Favorites: { screen: Favorites }
     },
     {
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -86,7 +86,7 @@ const FavoritesNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
-        }
+        })
     }
 );
 
@@ -95,7 +95,7 @@ const OrderNavigator = createStackNavigator(
         Order: { screen: Order },
     },
     {
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -109,7 +109,7 @@ const OrderNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
-        }
+        })
     }
 );
 
@@ -118,7 +118,7 @@ const AboutNavigator = createStackNavigator(
         About: { screen: About }
     },
     {
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -132,7 +132,7 @@ const AboutNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
-        }
+        })
     }
 );
 
@@ -141,7 +141,7 @@ const ContactNavigator = createStackNavigator(
         Contact: { screen: Contact }
     },
     {
-        navigationOptions: {
+        navigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -155,7 +155,7 @@ const ContactNavigator = createStackNavigator(
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
             />
-        }
+        })
     }
 );
 
