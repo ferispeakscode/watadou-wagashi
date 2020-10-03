@@ -6,11 +6,12 @@ import Favorites from './FavoritesComponent';
 import Order from './OrderComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
-import { View, Platform } from 'react-native';
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { View, Platform, StyleSheet, ScrollView, Image, Text } from 'react-native';
+import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { connect } from 'react-redux';
 import { fetchComments, fetchPromotions, fetchWagashi, fetchSuppliers } from '../redux/ActionCreators';
 import { Icon } from 'react-native-elements';
+import SafeAreaView from 'react-native-safe-area-view';
 
 const mapDispatchToProps = {
     fetchWagashi,
@@ -159,6 +160,28 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
+const CustomDrawerContentComponent = props => (
+    <ScrollView>
+        <SafeAreaView
+            style={styles.container}
+            forceInset={{top: 'always', horizontal: 'never'}}>
+            <View style={styles.drawerHeader}>
+                <View>
+                    <Image
+                        source={require('./images/logo.png')}
+                        style={styles.drawerImage}
+                    />
+                </View>
+                <View style={{flex: 2}}>
+                    <Text style={styles.drawerHeaderText}>Wagashi</Text>
+                </View>
+            </View>
+            <DrawerItems {...props} />
+        </SafeAreaView>
+    </ScrollView>
+);
+
+
 const MainNavigator = createDrawerNavigator(
     {
         Home: { 
@@ -246,6 +269,7 @@ const MainNavigator = createDrawerNavigator(
     },
     {
         drawerBackgroundColor: '#E5D5C7',
+        contentComponent: CustomDrawerContentComponent,
         contentOptions: {
             activeTintColor: '#AE323B',
             inactiveTintColor: '#1E1E24'
@@ -274,5 +298,34 @@ class Main extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    drawerHeader: {
+        backgroundColor: '#E5D5C7',
+        height: 180,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        flex: 1,
+        flexDirection: 'row'
+    },
+    drawerHeaderText: {
+        color: '#AE323B',
+        fontSize: 24,
+        fontWeight: 'bold'
+    },
+    drawerImage: {
+        margin: 10,
+        height: 160,
+        width: 160
+    },
+    stackIcon: {
+        marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    }
+});
 
 export default connect(null, mapDispatchToProps)(Main);
