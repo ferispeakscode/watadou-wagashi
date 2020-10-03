@@ -245,7 +245,12 @@ const MainNavigator = createDrawerNavigator(
         }
     },
     {
-        drawerBackgroundColor: '#E5D5C7'
+        drawerBackgroundColor: '#E5D5C7',
+        contentOptions: {
+            activeTintColor: '#AE323B',
+            inactiveTintColor: '#1E1E24'
+        }
+
     }
 );
 
