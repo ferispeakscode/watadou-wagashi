@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, FlatList, Modal, Button, StyleSheet, Alert, PanResponder } from 'react-native';
+import { Text, View, ScrollView, FlatList, Modal, Button, StyleSheet, Alert, PanResponder, Share } from 'react-native';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
@@ -61,6 +61,16 @@ function RenderWagashi(props) {
         }
     });
 
+    const shareWagashi = (title, message, url) => {
+        Share.share({
+            title,
+            message: `${title}: ${message} ${url}`,
+            url
+        }, {
+            dialogTitle: 'Share ' + title
+        });
+    };
+
     if (wagashi) {
         return (
             <Animatable.View
@@ -92,6 +102,15 @@ function RenderWagashi(props) {
                             raised
                             reverse
                             onPress={() => props.onShowModal()}
+                        />
+                        <Icon 
+                            style={styles.cardItem}
+                            name='share'
+                            type='font-awesome'
+                            color='#FFC60A'
+                            raised
+                            reverse
+                            onPress={() => shareWagashi(wagashi.name, wagashi.description, baseUrl + wagashi.image)}
                         />
                     </View>
                 </Card>
