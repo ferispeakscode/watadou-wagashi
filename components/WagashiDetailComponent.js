@@ -107,7 +107,7 @@ function RenderWagashi(props) {
                             style={styles.cardItem}
                             name='share'
                             type='font-awesome'
-                            color='#FFC60A'
+                            color='#AE323B'
                             raised
                             reverse
                             onPress={() => shareWagashi(wagashi.name, wagashi.description, baseUrl + wagashi.image)}
