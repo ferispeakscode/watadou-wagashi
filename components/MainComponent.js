@@ -309,15 +309,17 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 30
     },
     drawerHeaderText: {
         color: '#AE323B',
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginRight: 10
     },
     drawerImage: {
-        margin: 10,
+        marginLeft: 10,
         height: 160,
         width: 160
     },
