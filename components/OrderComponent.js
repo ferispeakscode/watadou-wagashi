@@ -79,7 +79,7 @@ class Order extends Component {
 
     render() {
         return (
-            <Animatable.View animation ='fadeInDown' duration={500} delay={500}>
+            <Animatable.View animation ='fadeInDown' duration={1000} delay={500}>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Customer Name</Text>
                 </View>
