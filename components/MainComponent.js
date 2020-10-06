@@ -31,7 +31,10 @@ const HomeNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#EAE8ED'
+                color: '#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon
                 name='home'
@@ -56,7 +59,10 @@ const CatalogNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#EAE8ED'
+                color: '#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon
                 name='list-alt'
@@ -79,7 +85,10 @@ const FavoritesNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#EAE8ED'
+                color: '#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon
                 name='heart'
@@ -102,7 +111,10 @@ const OrderNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color: '#EAE8ED'
+                color: '#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon
                 name='plus-circle'
@@ -125,7 +137,10 @@ const AboutNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#EAE8ED'
+                color:'#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon
                 name='user-circle'
@@ -148,7 +163,10 @@ const ContactNavigator = createStackNavigator(
             },
             headerTintColor: '#EAE8ED',
             headerTitleStyle: {
-                color:'#EAE8ED'
+                color:'#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
             },
             headerLeft: <Icon 
                 name='address-card'
