@@ -173,8 +173,7 @@ const CustomDrawerContentComponent = props => (
                     />
                 </View>
                 <View style={{flex: 2}}>
-                    {/* <Text style={{styles.drawerHeaderText}}>Wagashi</Text> */}
-                    <Text style={{fontFamily: 'Kaushan-Script'}}>Wagashi</Text>
+                    <Text style={styles.drawerHeaderText, {fontFamily: 'Kaushan-Script', fontSize: 28}}>Wagashi</Text>
                 </View>
             </View>
             <DrawerItems {...props} />
@@ -314,10 +313,10 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     drawerHeaderText: {
-        fontFamily: 'Kaushan-Script',
-        color: '#AE323B',
-        fontSize: 24,
-        fontWeight: 'bold',
+        // color: '#AE323B',
+        color: '#E5D5C7',
+        // fontSize: 64,
+        // fontWeight: 'bold',
         marginRight: 10
     },
     drawerImage: {
