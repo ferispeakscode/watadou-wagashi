@@ -23,7 +23,7 @@ const mapDispatchToProps = {
 class Favorites extends Component {
 
     static navigationOptions = {
-        title: 'My Favorite Wagashi'
+        title: 'My Favorites'
     }
 
     render() {
