@@ -173,7 +173,7 @@ const CustomDrawerContentComponent = props => (
                     />
                 </View>
                 <View style={{flex: 2}}>
-                    <Text style={styles.drawerHeaderText, {fontFamily: 'Kaushan-Script', fontSize: 28}}>Wagashi</Text>
+                    <Text style={{fontFamily: 'Kaushan-Script', fontSize: 28, color: '#AE323B', marginRight: 10}}>Wagashi</Text>
                 </View>
             </View>
             <DrawerItems {...props} />
@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     drawerHeaderText: {
-        // color: '#AE323B',
+        // color: '#AE323B', marginRight: 10
         color: '#E5D5C7',
         // fontSize: 64,
         // fontWeight: 'bold',
