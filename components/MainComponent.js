@@ -312,13 +312,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 30
     },
-    drawerHeaderText: {
-        // color: '#AE323B', marginRight: 10
-        color: '#E5D5C7',
-        // fontSize: 64,
-        // fontWeight: 'bold',
-        marginRight: 10
-    },
     drawerImage: {
         marginLeft: 10,
         height: 160,
