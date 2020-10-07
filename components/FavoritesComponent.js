@@ -59,7 +59,7 @@ class Favorites extends Component {
                     <Animatable.View animation='fadeInRightBig' duration={2000}>
                         <ListItem 
                             title={item.name}
-                            subtitle={item.description}
+                            subtitle={item.shortDescription}
                             leftAvatar={{source: {uri: baseUrl + item.image}}}
                             onPress={() => navigate('WagashiDetail', { wagashiId: item.id })}
                         />
