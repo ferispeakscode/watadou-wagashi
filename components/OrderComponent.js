@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Picker, Switch, Button, Alert, TextInput, Keyboard, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Picker, Switch, Button, Alert, TextInput } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
