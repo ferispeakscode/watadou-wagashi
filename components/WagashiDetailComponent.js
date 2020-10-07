@@ -216,8 +216,6 @@ class WagashiDetail extends Component {
         const wagashiId = this.props.navigation.getParam('wagashiId');
         const wagashi = this.props.wagashi.wagashi.filter(wagashi => wagashi.id === wagashiId)[0];
         const comments = this.props.comments.comments.filter(comment => comment.wagashiId === wagashiId);
-        console.log("rendered comments are:" + comments);
-        console.log(this.props.comments.comments);
 
         return (
             <ScrollView>
@@ -252,7 +250,7 @@ class WagashiDetail extends Component {
                             onChangeText={(author) => this.setState({author: author})}
                             value={this.state.author}
                         />
-                        <Input 
+                        <Input
                             placeholder='Comment'
                             leftIcon={{type: 'font-awesome', name: 'comment-o'}}
                             leftIconContainerStyle={{paddingRight: 10}}
