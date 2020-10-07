@@ -48,12 +48,22 @@ const HomeNavigator = createStackNavigator(
 
 const CatalogNavigator = createStackNavigator(
     {
-        Catalog: { screen: Catalog },
+        Catalog: { 
+            screen: Catalog,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                name='list-alt'
+                type='font-awesome'
+                iconStyle={styles.catalogIcon}
+                onPress={() => navigation.toggleDrawer()} 
+            />
+            })
+        },
         WagashiDetail: { screen: WagashiDetail }
     },
     {
         initialRouteName: 'Catalog',
-        navigationOptions: ({navigation}) => ({
+        navigationOptions: {
             headerStyle: {
                 backgroundColor: '#4F171B'
             },
@@ -63,14 +73,8 @@ const CatalogNavigator = createStackNavigator(
                 fontFamily: 'Kaushan-Script',
                 fontWeight: '400',
                 fontSize: 28
-            },
-            headerLeft: <Icon
-                name='list-alt'
-                type='font-awesome'
-                iconStyle={{margin: 20, color: '#EAE8ED'}}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
+            }
+        }
     }
 );
 
@@ -344,6 +348,11 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    },
+    catalogIcon: {
+        marginLeft: 20,
         color: '#fff',
         fontSize: 24
     }
