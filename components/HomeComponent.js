@@ -44,7 +44,7 @@ function RenderItem(props) {
 class Home extends Component {
 
     static navigationOptions = {
-        title: 'Home'
+        title: 'World of Wagashi'
     }
 
     render() {
