@@ -28,6 +28,7 @@ function RenderWagashi(props) {
 
     const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
     const recognizeComment = ({dx}) => (dx > 200) ? true : false;
+    const recognizeOrder = ({dy}) => (dy > 100) ? true : false;
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
@@ -55,8 +56,24 @@ function RenderWagashi(props) {
                     ],
                     { cancelable: false }
                 );
-            } else if (recognizeComment (gestureState)) {
+            } else if (recognizeComment(gestureState)) {
                 props.onShowModal();
+            } else if (recognizeOrder(gestureState)) {
+                Alert.alert(
+                    'Make an Order?',
+                    'Would you like to proceed to the order screen? Press "Yes" to confirm.',
+                    [
+                        {
+                            text: 'Cancel',
+                            style: 'cancel',
+                            onPress: () => console.log('Cancel Pressed')
+                        },
+                        {
+                            text: 'Yes',
+                            onPress: () => props.makeOrder()
+                        }
+                    ]
+                );
             }
         }
     });
@@ -166,6 +183,10 @@ class WagashiDetail extends Component {
         this.props.postFavorite(wagashiId);
     }
 
+    makeOrder() {
+        this.props.navigation.navigate('Order');
+    }
+
     toggleModal() {
         this.setState({showModal: !this.state.showModal});
     }
@@ -201,6 +222,7 @@ class WagashiDetail extends Component {
                     favorite={this.props.favorites.includes(wagashiId)}
                     markFavorite={() => this.markFavorite(wagashiId)}
                     onShowModal={() => this.toggleModal()}
+                    makeOrder={() => this.makeOrder()}
                 />
                 <RenderComments comments={comments} />
 
