@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Picker, Switch, Button, Alert } from 'react-native';
+import { Text, View, StyleSheet, Picker, Switch, Button, Alert, TextInput, Keyboard } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
@@ -21,6 +21,16 @@ class Order extends Component {
 
     static navigationOptions = {
         title: 'Order Wagashi'
+    }
+
+    getName = () => {
+        const [value, onChangeText] = React.useState('');
+        return (
+            <TextInput 
+            style={styles.formItem}
+            value={this.state.name}
+            onChangeText={itemValue => this.setState({name: itemValue})} />
+        );
     }
 
     submitForm = () => {
@@ -80,8 +90,15 @@ class Order extends Component {
     render() {
         return (
             <Animatable.View animation ='fadeInDown' duration={1000} delay={500}>
+                
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Customer Name</Text>
+                    <TextInput 
+                        style={styles.formInput}
+                        placeholder="Your Name"
+                        value={this.state.name}
+                        // onBlur={Keyboard.dismiss}
+                        onChangeText={itemValue => this.setState({name: itemValue})} />
                 </View>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Type of Wagashi</Text>
@@ -178,6 +195,11 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
+    },
+    formInput: {
+        marginRight: 20,
+        height: 40,
+        fontSize: 18
     },
     modal: {
         justifyContent: 'center',
