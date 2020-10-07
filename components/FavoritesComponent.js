@@ -51,6 +51,10 @@ class Favorites extends Component {
                             { cancelable: false }
                         )
                     }
+                }, {
+                    text: 'Order',
+                    backgroundColor: '#3B3743',
+                    onPress: () => navigate('Order')
                 }
             ];
 
