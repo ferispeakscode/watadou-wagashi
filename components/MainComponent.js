@@ -348,12 +348,12 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: '#EAE8ED',
         fontSize: 24
     },
     catalogIcon: {
         marginLeft: 20,
-        color: '#fff',
+        color: '#EAE8ED',
         fontSize: 24
     }
 });

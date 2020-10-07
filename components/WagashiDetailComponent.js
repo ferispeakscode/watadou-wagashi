@@ -142,14 +142,17 @@ function RenderComments({comments}) {
     const renderCommentItem = ({item}) => {
         return (
             <View style={{margin: 10}}>
-                <Text style={{fontSize: 14}}>{item.text}</Text>
-                <Rating 
-                    style={{alignItems: 'flex-start', paddingVertical:'5%'}}
-                    startingValue={item.rating}
-                    imageSize={10}
-                    readonly
-                />
-                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
+                <View style={{flexDirection: 'column', alignContent: 'space-between', paddingVertical: '5%'}}>
+                    <Rating 
+                        style={{alignItems:'flex-end', paddingVertical: '2%'}}
+                        type='heart'
+                        startingValue={item.rating}
+                        imageSize={20}
+                        readonly
+                    />
+                    <Text style={{fontSize: 16}}>{item.text}</Text>
+                </View>
+                    <Text style={{fontSize: 12, flex: 1}}>{`-- ${item.author}, ${item.date}`}</Text>
             </View>
         );
     };
@@ -234,6 +237,9 @@ class WagashiDetail extends Component {
                     <View style={styles.modal}>
                         <Rating 
                             style={{paddingVertical: 10}}
+                            type='heart'
+                            ratingTextColor='#F56476'
+                            fractions={1}
                             showRating
                             startingValue={this.state.rating}
                             imageSize={40}
