@@ -178,3 +178,20 @@ export const deleteFavorite = wagashiId => ({
     type: ActionTypes.DELETE_FAVORITE,
     payload: wagashiId
 });
+
+export const postOrder = orderId => dispatch => {
+    setTimeout(() => {
+        dispatch(addOrder(orderId));
+    }, 2000);
+};
+
+export const addOrder = orderId => ({
+    type: ActionTypes.ADD_ORDER,
+    payload: orderId
+});
+
+export const deleteOrder = orderId => ({
+    type: ActionTypes.DELETE_ORDER,
+    payload: orderId
+})
+
