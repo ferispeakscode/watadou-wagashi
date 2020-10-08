@@ -27,10 +27,9 @@ export const orders = (state = { errMess: null, orders: []}, action) => {
             //working in the reducer - must use "state"
             let newOrder = {...action.payload, id: state.orders.length}
             //state is immutable in react - create a copy of the comments array to make changes
-            let newOrder = state.orders.slice();
+            let newOrders = state.orders.slice();
             //add new comment to array of existing comments
             newOrders.push(newOrder);
-            console.log({...newOrder});
             return {...state, orders: newOrders};
 
         case ActionTypes.DELETE_ORDER:

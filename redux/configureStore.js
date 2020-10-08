@@ -6,6 +6,7 @@ import { comments } from './comments';
 import { favorites } from './favorites';
 import { promotions } from './promotions';
 import { suppliers } from './suppliers';
+import { orders } from './orders';
 import { persistStore, persistCombineReducers } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 
@@ -20,9 +21,10 @@ export const ConfigureStore = () => {
         persistCombineReducers(config, {
             wagashi,
             comments,
+            orders,
             favorites,
             promotions,
-            suppliers
+            suppliers,
         }),
         applyMiddleware(thunk, logger)
     );
