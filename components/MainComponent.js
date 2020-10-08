@@ -148,7 +148,7 @@ const OrderHistoryNavigator = createStackNavigator(
                 fontSize: 28
             },
             headerLeft: <Icon
-                name='clipboard-list'
+                name='list-ol'
                 type='font-awesome'
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
@@ -293,7 +293,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLabel: 'Order History',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='clipboard-list'
+                        name='list-ol'
                         type='font-awesome'
                         size={24}
                         color={tintColor}

@@ -30,6 +30,7 @@ export const orders = (state = { errMess: null, orders: []}, action) => {
             let newOrder = state.orders.slice();
             //add new comment to array of existing comments
             newOrders.push(newOrder);
+            console.log({...newOrder});
             return {...state, orders: newOrders};
 
         case ActionTypes.DELETE_ORDER:

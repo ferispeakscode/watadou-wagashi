@@ -179,9 +179,8 @@ export const deleteFavorite = wagashiId => ({
     payload: wagashiId
 });
 
-export const postOrder = (orderId, name, type, number, date, gift) => dispatch => {
+export const postOrder = (name, type, number, date, gift) => dispatch => {
     const newOrder = {
-        orderId,
         name,
         type,
         number,

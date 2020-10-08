@@ -4,10 +4,17 @@ import DatePicker from 'react-native-datepicker';
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
 import { Notifications } from 'expo';
+import { connect } from 'react-redux';
 import { postOrder } from '../redux/ActionCreators';
 
+const mapStateToProps = state => {
+    return {
+        orders: state.orders
+    };
+};
+
 const mapDispatchToProps = {
-    postOrder: (orderId, orderDetails) => (postOrder(orderId, orderDetails)),
+    postOrder: (name, type, number, date, gift) => (postOrder(name, type, number, date, gift))
 };
 
 class Order extends Component {
@@ -54,6 +61,16 @@ class Order extends Component {
         return id;
     }
 
+    convertType() {
+        switch(this.state.type) {
+            case 'Mejiro': return 0;
+            case 'Usuzumi-Zakura': return 1;
+            case 'Hazakura': return 2;
+            case 'Shingetsu': return 3;
+            case 'Shirabuji': return 4;
+        }
+    }
+
     submitForm = () => {
         Alert.alert(
             "Submit Order?",
@@ -68,8 +85,7 @@ class Order extends Component {
                     text: "Submit",
                     onPress: () => {
                         this.presentLocalNotification(this.state.type, this.state.number, this.state.date);
-                        console.log("Generated ID is " + this.generateId());
-                        // this.props.postOrder(generateId());
+                        this.props.postOrder(this.state.name, this.state.type, this.state.number, this.state.date, this.state.gift);
                         this.resetForm();
                     }
                 }
@@ -240,4 +256,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Order;
+export default connect(mapStateToProps, mapDispatchToProps)(Order);
