@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Alert, View, Text, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
 import Swipeout from 'react-native-swipeout';
 import { deleteOrder } from '../redux/ActionCreators';
 import * as Animatable from 'react-native-animatable';
@@ -11,33 +9,30 @@ import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
-        wagashi: state.wagashi,
-        favorites: state.favorites,
         orders: state.orders
     };
 };
 
 const mapDispatchToProps = {
-    deleteOrder: orderId => (deleteOrder(orderId))
+    deleteOrder: id => (deleteOrder(id))
 };
 
 class OrderHistory extends Component {
 
     static navigationOptions = {
-        title: 'My Orders'
+        title: 'My Order History'
     }
 
     render() {
-        const { navigate } = this.props.navigation;
-        const renderFavoriteItem = ({item}) => {
+        const renderOrderItem = ({item}) => {
             const rightButton = [
                 {
                     text: 'Delete',
                     type: 'delete',
                     onPress: () => {
                         Alert.alert(
-                            'Delete Order?',
-                            'Are you sure you wish to delete these order details from favorites?',
+                            'Delete Favorite?',
+                            'Are you sure you wish to delete the details for this order from history? (Note: For cancellations, please contact us directly.)',
                             [
                                 {
                                     text: 'Cancel',
@@ -59,32 +54,28 @@ class OrderHistory extends Component {
                 <Swipeout right={rightButton} autoClose={true}>
                     <Animatable.View animation='fadeInRightBig' duration={2000}>
                         <ListItem 
-                            title={item.name}
-                            subtitle={item.shortDescription}
-                            leftAvatar={{source: {uri: baseUrl + item.image}}}
-                            onPress={() => navigate('OrderDetail', { orderId: item.id })}
+                            title={
+                                <View>
+                                    <Text style={{fontSize: 20}}>Customer Name: {item.name}</Text>
+                                </View>}
+                            subtitle={
+                                <View style={{marginLeft: 20}}>
+                                    <Text>Wagashi Type: {item.type}</Text>
+                                    <Text>Number Ordered: {item.number}</Text>
+                                    <Text>Pickup Date: {item.date}</Text>
+                                    {/* <Text>Gift Wrap: {item.gift}</Text> */}
+                                </View>
+                            }
                         />
                     </Animatable.View>
                 </Swipeout>
             );
         };
 
-        // if (this.props.wagashi.isLoading) {
-        //     return <Loading />;
-        // }
-        // if (this.props.wagashi.errMess) {
-        //     return (
-        //         <View>
-        //             <Text>{this.props.wagashi.errMess}</Text>
-        //         </View>
-        //     );
-        // }
         return(
             <FlatList
-                data={this.props.wagashi.wagashi.filter(
-                    w => this.props.favorites.includes(w.id)
-                )}
-                renderItem={renderFavoriteItem}
+                data={this.props.orders.orders.filter(order => order.id === order.id)}
+                renderItem={renderOrderItem}
                 keyExtractor={item => item.id.toString()}
             />
         );

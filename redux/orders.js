@@ -1,27 +1,8 @@
-// import * as ActionTypes from './ActionTypes';
-
-// export const orders = (state = [], action) => {
-
-//     switch (action.type) {
-//         case ActionTypes.ADD_ORDER:
-//             if (state.includes(action.payload)) {
-//                 return state;
-//             }
-//             return state.concat(action.payload);
-
-//         case ActionTypes.DELETE_ORDER:
-//             return state.filter(order => order !== action.payload);
-
-//         default:
-//             return state;
-//     }
-// }
-
 import * as ActionTypes from './ActionTypes';
 
 export const orders = (state = { errMess: null, orders: []}, action) => {
+    
     switch (action.type) {
-
         case ActionTypes.ADD_ORDER:
             //add id to comment
             //working in the reducer - must use "state"
@@ -33,7 +14,7 @@ export const orders = (state = { errMess: null, orders: []}, action) => {
             return {...state, orders: newOrders};
 
         case ActionTypes.DELETE_ORDER:
-            return state.filter(order => order !== action.payload);
+            return { orders: state.orders.filter(order => order.id !== action.payload)};
 
         default:
             return state;
