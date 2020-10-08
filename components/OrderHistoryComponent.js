@@ -31,7 +31,7 @@ class OrderHistory extends Component {
                     type: 'delete',
                     onPress: () => {
                         Alert.alert(
-                            'Delete Favorite?',
+                            'Delete Order Details?',
                             'Are you sure you wish to delete the details for this order from history? (Note: For cancellations, please contact us directly.)',
                             [
                                 {
