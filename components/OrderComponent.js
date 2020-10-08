@@ -35,32 +35,6 @@ class Order extends Component {
         title: 'Order Wagashi'
     }
 
-    generateId () {
-        id = 'WA-' + this.state.date;
-
-        switch(this.state.type) {
-            case 'Mejiro': id += 0;
-                break;
-            case 'Usuzumi-Zakura': id += 1;
-                break;
-            case 'Hazakura': id += 2;
-                break;
-            case 'Shingetsu': id += 3;
-                break;
-            case 'Shirabuji': id += 4;
-                break;
-        }
-
-        id += '-NO' + this.state.number + '-NA' + this.state.name.toUpperCase();
-
-        if(this.state.gift)
-            id += '01';
-        else 
-            id += '00';
-
-        return id;
-    }
-
     convertType() {
         switch(this.state.type) {
             case 'Mejiro': return 0;
