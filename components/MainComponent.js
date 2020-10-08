@@ -4,6 +4,7 @@ import Catalog from './CatalogComponent';
 import WagashiDetail from './WagashiDetailComponent';
 import Favorites from './FavoritesComponent';
 import Order from './OrderComponent';
+import OrderHistory from './OrderHistoryComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { View, Platform, StyleSheet, ScrollView, Image, Text } from 'react-native';
@@ -122,6 +123,32 @@ const OrderNavigator = createStackNavigator(
             },
             headerLeft: <Icon
                 name='plus-circle'
+                type='font-awesome'
+                iconStyle={{margin: 20, color: '#EAE8ED'}}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
+const OrderHistoryNavigator = createStackNavigator(
+    {
+        OrderHistory: { screen: OrderHistory }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#4F171B'
+            },
+            headerTintColor: '#EAE8ED',
+            headerTitleStyle: {
+                color: '#EAE8ED',
+                fontFamily: 'Kaushan-Script',
+                fontWeight: '400',
+                fontSize: 28
+            },
+            headerLeft: <Icon
+                name='clipboard-list'
                 type='font-awesome'
                 iconStyle={{margin: 20, color: '#EAE8ED'}}
                 onPress={() => navigation.toggleDrawer()}
@@ -253,6 +280,20 @@ const MainNavigator = createDrawerNavigator(
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='plus-circle'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        OrderHistory: {
+            screen: OrderHistoryNavigator,
+            navigationOptions: {
+                drawerLabel: 'Order History',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='clipboard-list'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
